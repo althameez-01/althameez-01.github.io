@@ -990,31 +990,6 @@ header{
 
 }
 
-/* Scanner Module */
-
-.ring::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:30px;
-    height:8px;
-
-    border-radius:30px;
-
-    background:linear-gradient(90deg,#67E8F9,#22D3EE);
-
-    top:-4px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    box-shadow:
-    0 0 15px rgba(103,232,249,.8);
-
-}
-
 /* ======================================================
    FLOATING PARTICLES
 ====================================================== */
