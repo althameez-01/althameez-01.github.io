@@ -811,35 +811,75 @@ header{
     box-shadow:0 12px 28px rgba(0,200,150,.35);
 
 }
+
+
 /* ======================================================
    HERO IMAGE
 ====================================================== */
 
-.hero-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.hero-right{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
 }
 
-.image-card {
-    width: 480px;
-    height: 480px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.image-card{
+
+    width:480px;
+    height:480px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
 }
 
-.image-card img {
-    width: 360px;
-    height: 360px;
-    object-fit: cover;
-    border-radius: 50%;
-    position: relative;
-    z-index: 2;
-    border: 8px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+.image-card img{
+
+    width:360px;
+    height:360px;
+    object-fit:cover;
+    border-radius:50%;
+    position:relative;
+    z-index:5;
+
+    border:8px solid rgba(255,255,255,.10);
+
+    box-shadow:
+    0 0 30px rgba(103,232,249,.18),
+    0 40px 80px rgba(0,0,0,.45);
+
 }
+
+/* Soft Glow */
+
+.image-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:390px;
+    height:390px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(103,232,249,.18),
+    transparent 72%);
+
+    filter:blur(15px);
+
+    animation:glowPulse 4s ease-in-out infinite;
+
+}
+
+/* ======================================================
+   AI RINGS
+====================================================== */
 
 .ring{
 
@@ -847,85 +887,187 @@ header{
 
     border-radius:50%;
 
-    border:1.5px dashed rgba(103,232,249,.20);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    pointer-events:none;
 
 }
 
-.ring::before{
+/* -------------------------
+   INNER RING
+-------------------------- */
+
+.ring.one{
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    border-top:4px solid #67E8F9;
+    border-right:4px solid #67E8F9;
+
+    border-left:4px solid transparent;
+    border-bottom:4px solid transparent;
+
+    animation:orbitOne 14s linear infinite;
+
+}
+
+.ring.one::before{
 
     content:"";
 
     position:absolute;
 
-    top:-7px;
-
-    width:14px;
-
-    height:14px;
+    inset:25px;
 
     border-radius:50%;
 
-    background:var(--primary);
+    border-left:3px solid rgba(103,232,249,.6);
+    border-bottom:3px solid rgba(103,232,249,.6);
 
-    box-shadow:
-        0 0 15px var(--primary),
-        0 0 35px var(--primary);
-
-}
-
-.ring.one{
-
-    width:420px;
-
-    height:420px;
-
-    animation:orbitOne 18s linear infinite;
+    border-top:3px solid transparent;
+    border-right:3px solid transparent;
 
 }
+
+/* -------------------------
+   MIDDLE RING
+-------------------------- */
 
 .ring.two{
 
     width:470px;
-
     height:470px;
 
-    animation:orbitTwo 24s linear infinite;
+    border-radius:50%;
+
+    border-left:3px solid #22D3EE;
+    border-bottom:3px solid #22D3EE;
+
+    border-top:3px solid transparent;
+    border-right:3px solid transparent;
+
+    animation:orbitTwo 18s linear infinite;
 
 }
 
 .ring.two::before{
 
-    background:var(--secondary);
+    content:"";
 
-    box-shadow:
-        0 0 15px var(--secondary),
-        0 0 35px var(--secondary);
+    position:absolute;
+
+    inset:30px;
+
+    border-radius:50%;
+
+    border-top:3px solid rgba(255,255,255,.25);
+    border-right:3px solid rgba(255,255,255,.25);
+
+    border-left:3px solid transparent;
+    border-bottom:3px solid transparent;
 
 }
+
+/* -------------------------
+   OUTER RING
+-------------------------- */
 
 .ring.three{
 
     width:520px;
-
     height:520px;
 
-    animation:orbitThree 30s linear infinite;
+    border-radius:50%;
+
+    border-top:2px solid rgba(255,255,255,.35);
+    border-bottom:2px solid rgba(255,255,255,.35);
+
+    border-left:2px solid transparent;
+    border-right:2px solid transparent;
+
+    animation:orbitThree 26s linear infinite;
 
 }
 
-.ring.three::before{
+/* Scanner Module */
 
-    background:var(--accent);
+.ring::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:30px;
+    height:8px;
+
+    border-radius:30px;
+
+    background:linear-gradient(90deg,#67E8F9,#22D3EE);
+
+    top:-4px;
+    left:50%;
+
+    transform:translateX(-50%);
 
     box-shadow:
-        0 0 15px var(--accent),
-        0 0 35px var(--accent);
+    0 0 15px rgba(103,232,249,.8);
+
+}
+
+/* ======================================================
+   FLOATING PARTICLES
+====================================================== */
+
+.particle{
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#67E8F9;
+
+    box-shadow:
+    0 0 12px #67E8F9;
+
+}
+
+.p1{
+
+    top:45px;
+    left:75px;
+
+    animation:floatParticle 5s infinite;
+
+}
+
+.p2{
+
+    top:100px;
+    right:65px;
+
+    animation:floatParticle 6s infinite;
+
+}
+
+.p3{
+
+    bottom:70px;
+    left:60px;
+
+    animation:floatParticle 7s infinite;
+
+}
+
+.p4{
+
+    bottom:120px;
+    right:70px;
+
+    animation:floatParticle 8s infinite;
 
 }
 
@@ -1020,14 +1162,52 @@ header{
 
 }
 
+@keyframes glowPulse{
+
+    0%,100%{
+
+        transform:scale(.98);
+        opacity:.45;
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+        opacity:.9;
+
+    }
+
+}
+
+@keyframes floatParticle{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-18px);
+
+    }
+
+}
+
 @keyframes orbitOne{
 
     from{
+
         transform:rotate(0deg);
+
     }
 
     to{
+
         transform:rotate(360deg);
+
     }
 
 }
@@ -1035,11 +1215,15 @@ header{
 @keyframes orbitTwo{
 
     from{
+
         transform:rotate(360deg);
+
     }
 
     to{
+
         transform:rotate(0deg);
+
     }
 
 }
@@ -1047,11 +1231,15 @@ header{
 @keyframes orbitThree{
 
     from{
+
         transform:rotate(0deg);
+
     }
 
     to{
+
         transform:rotate(360deg);
+
     }
 
 }
